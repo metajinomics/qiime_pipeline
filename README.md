@@ -4,7 +4,14 @@ QIIME pipeline
 #STEP 1: Demultiplex and merge sequence
 ## Demultiplex option1: make individual file
 ### demultiplex using jin’s code
-
+```
+python separate_by_sample.py mapping_file barcode_file fastq R1/R2 directory 
+```
+example
+```
+python separate_by_sample.py mapping.txt Undetermined_S0_L001_I1_001.fastq.gz Undetermined_S0_L001_R1_001.fastq.gz R1 out_seqs
+python separate_by_sample.py mapping.txt Undetermined_S0_L001_I1_001.fastq.gz Undetermined_S0_L001_R2_001.fastq.gz R2 out_seqs
+```
 ### merge by pandaseq
 ```
 for x in jin_new/*.R1.fastq.gz;do echo "pandaseq -f $x -r ${x%R1*}R2.fastq.gz -u ${x%R1*}unmerged.fa 2> ${x%R1*}pandastat.txt 1> ${x%R1*}fasta";done > command.panda.sh
@@ -12,19 +19,25 @@ cat command.panda.sh |parallel
 ```
 
 ### prepare mapping file
+```
 awk '{print $0 "\t" $1 ".fasta"}' jin_mapping.new.txt > jin_mapping.new.filename.txt
+```
 use emacs change last column InputFileName
 
 ### combine
+```
 add_qiime_labels.py -i small64/ -m  small64_mapping.txt -c InputFileName
-
+```
 
 ## Demultiplex option2: merge without demultiplex
 ### Merge paired-end reads
+```
 join_paired_ends.py -f Undetermined_S0_L001_R1_001.fastq.gz -r Undetermined_S0_L001_R2_001.fastq.gz -o fastq-join_joined -b Undetermined_S0_L001_I1_001.fastq.gz
-
+```
 ### Demultiplex
+```
 split_libraries_fastq.py -i fastqjoin.join.fastq -b fastqjoin.join_barcodes.fastq -o out_q20/ -m ../mapping.txt -q 19 --rev_comp_mapping_barcodes --store_demultiplexed_fastq
+```
 
 #STEP 2: Chimera detection
 Install usearch
