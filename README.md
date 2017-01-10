@@ -18,7 +18,7 @@ for x in jin_new/*.R1.fastq.gz;do echo "pandaseq -f $x -r ${x%R1*}R2.fastq.gz -u
 cat command.panda.sh |parallel
 ```
 
-### prepare mapping file
+### add filenames into the  mapping file
 ```
 awk '{print $0 "\t" $1 ".fasta"}' jin_mapping.new.txt > jin_mapping.new.filename.txt
 ```
