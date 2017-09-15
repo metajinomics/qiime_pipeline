@@ -14,3 +14,24 @@ cat command.panda.sh | parallel
 ```
 
 ## make mapping file
+```
+git clone https://github.com/metajinomics/qiime_tools.git
+python qiime_tools/make_mapping_file.py merged > mapping.file.txt
+```
+
+## download database for chimera removal
+wget http://greengenes.lbl.gov/Download/Sequence_Data/Fasta_data_files/Caporaso_Reference_OTUs/gg_otus_4feb2011.tgz
+tar -xvzf gg_otus_4feb2011.tgz
+
+## combine sequences
+add_qiime_labels.py -i merged/ -m  mapping.txt -c InputFileName
+
+
+## remove chimera
+identify_chimeric_seqs.py -i combined_seqs.fna -m usearch61 -o usearch_checked_chimeras/ -r gg_otus_4feb2011/rep_set/gg_97_otus_4feb2011.fasta 
+filter_fasta.py -f combined_seqs.fna -o seqs_chimeras_filtered.fna -s usearch_checked_chimeras/chimeras.txt -n
+
+
+## run qiime pipeline
+pick_open_reference_otus.py -i seqs_chimeras_filtered.fna -o uclust_openref/
+
