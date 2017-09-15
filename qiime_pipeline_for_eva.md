@@ -28,7 +28,7 @@ tar -xvzf gg_otus_4feb2011.tgz
 ## load module
 ```
 module load bioinfo-tools
-module load QIIME
+module load Qiime
 ```
 
 ## combine sequences
