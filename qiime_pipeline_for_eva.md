@@ -49,7 +49,7 @@ mv vsearch usearch61
 ```
 ## set path, you need to set path everytime you log in
 ```
-PATH=$PATH:/proj/~~~~
+PATH=$PATH:/proj/b2016430/nobackup/projects/16S18S/vsearch-2.3.3/bin
 export PATH
 ```
 
