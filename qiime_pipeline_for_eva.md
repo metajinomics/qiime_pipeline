@@ -36,6 +36,17 @@ module load Qiime
 add_qiime_labels.py -i merged/ -m  mapping.txt -c InputFileName
 ```
 
+## install vsearch
+```
+wget https://github.com/torognes/vsearch/archive/v2.3.3.tar.gz
+tar xzf v2.3.3.tar.gz
+cd vsearch-2.3.3
+./autogen.sh
+./configure
+make
+
+```
+
 ## remove chimera
 ```
 identify_chimeric_seqs.py -i combined_seqs.fna -m usearch61 -o usearch_checked_chimeras/ -r gg_otus_4feb2011/rep_set/gg_97_otus_4feb2011.fasta 
