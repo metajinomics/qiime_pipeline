@@ -44,7 +44,13 @@ cd vsearch-2.3.3
 ./autogen.sh
 ./configure
 make
-
+cd bin
+mv vesarch usearch61
+```
+## set path, you need to set path everytime you log in
+```
+PATH=$PATH:/proj/~~~~
+export PATH
 ```
 
 ## remove chimera
