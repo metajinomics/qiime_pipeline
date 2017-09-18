@@ -33,7 +33,7 @@ module load Qiime
 
 ## combine sequences
 ```
-add_qiime_labels.py -i merged/ -m  mapping.txt -c InputFileName
+add_qiime_labels.py -i merged/ -m  mapping.file.txt -c InputFileName
 ```
 
 ## install vsearch
@@ -45,7 +45,7 @@ cd vsearch-2.3.3
 ./configure
 make
 cd bin
-mv vesarch usearch61
+mv vsearch usearch61
 ```
 ## set path, you need to set path everytime you log in
 ```
