@@ -24,7 +24,7 @@ python qiime_tools/make_mapping_file.py merged > mapping.file.txt
 wget http://greengenes.lbl.gov/Download/Sequence_Data/Fasta_data_files/Caporaso_Reference_OTUs/gg_otus_4feb2011.tgz
 tar -xvzf gg_otus_4feb2011.tgz
 ```
-## note that it might be a faster process to first perform the chimera check of each sample, filter away the chimeras, and then combine them. After which the qiime pipeline can be launched.
+## note that it might be a faster process to first perform the chimera check of each sample, filter away the chimeras, and then combine the samples. After which the qiime pipeline can be launched.
 
 ## load module
 ```
