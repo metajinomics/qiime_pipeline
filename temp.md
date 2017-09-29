@@ -106,6 +106,9 @@ assign_taxonomy:reference_seqs_fp SILVA_128_QIIME_release/rep_set/rep_set_all/97
 
 ### then run qiime
 ```
+module load bioinfo-tools
+module load blast/2.2.26
+
 pick_open_reference_otus.py -i COMBINED.fasta -r SILVA_128_QIIME_release/rep_set/rep_set_all/97/97_otus.fasta -o qiime_output -p params.txt --suppress_align_and_tree
 ```
 
