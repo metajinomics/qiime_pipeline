@@ -88,7 +88,7 @@ vsearch -uchime_ref YOUR.fasta -db SILVA_128_QIIME_release/rep_set/rep_set_all/9
 ```
 ### let's make it faster
 ```
-for x in merged/*.fastq;do echo "vsearch -uchime_ref $x -db SILVA_128_QIIME_release/rep_set/rep_set_all/97/97_otus.fasta -strand plus -nonchimeras $x.nochimera.fna -threads 10";done > command.chimera.sh
+for x in merged/*.fasta;do echo "vsearch -uchime_ref $x -db SILVA_128_QIIME_release/rep_set/rep_set_all/97/97_otus.fasta -strand plus -nonchimeras $x.nochimera.fna -threads 10";done > command.chimera.sh
 cat command.chimera.sh | parallel
 ```
 ## make mapping file
