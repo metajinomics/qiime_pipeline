@@ -21,10 +21,18 @@ python qiime_tools/make_mapping_file.py merged > mapping.file.txt
 
 ## download database for chimera removal
 ```
+for 16S:
 wget http://greengenes.lbl.gov/Download/Sequence_Data/Fasta_data_files/Caporaso_Reference_OTUs/gg_otus_4feb2011.tgz
 tar -xvzf gg_otus_4feb2011.tgz
+
+for 18S:
+wget https://www.arb-silva.de/fileadmin/silva_databases/qiime/Silva_128_release.tgz
+tar -xvzf Silva_128_release.tgz
 ```
-## note that it might be a faster process to first perform the chimera check of each sample, filter away the chimeras, and then combine the samples. After which the qiime pipeline can be launched.
+## note 
+```
+that it might be a faster process to first perform the chimera check of each sample, filter away the chimeras, and then combine the samples. After which the qiime pipeline can be launched.
+```
 
 ## load module
 ```
@@ -56,8 +64,16 @@ export PATH
 
 ## remove chimera
 ```
+for 16S:
 identify_chimeric_seqs.py -i combined_seqs.fna -m usearch61 -o usearch_checked_chimeras/ -r gg_otus_4feb2011/rep_set/gg_97_otus_4feb2011.fasta 
 filter_fasta.py -f combined_seqs.fna -o seqs_chimeras_filtered.fna -s usearch_checked_chimeras/chimeras.txt -n
+
+for 18S:
+identify_chimeric_seqs.py -i combined_seqs.fna -m usearch61 -o usearch_checked_chimeras/ -r Silva_128_release/rep_set/gg_97_otus_4feb2011.fasta 
+filter_fasta.py -f combined_seqs.fna -o seqs_chimeras_filtered.fna -s usearch_checked_chimeras/chimeras.txt -n
+
+
+
 ```
 
 ## run qiime pipeline
