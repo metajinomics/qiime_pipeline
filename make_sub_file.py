@@ -1,8 +1,8 @@
 #!/usr/bin/python
 
-```
+"""
 usage: python make_sub_file.py format command
-```
+"""
 
 #read format
 format = []
