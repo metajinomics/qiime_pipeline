@@ -3,6 +3,7 @@
 """
 usage: python make_sub_file.py format command
 """
+import sys
 
 #read format
 format = []
