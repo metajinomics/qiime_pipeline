@@ -60,7 +60,7 @@ vsearch -uchime_ref YOUR.fasta -db SILVA_128_QIIME_release/rep_set/rep_set_all/9
 ```
 for x in merged/*.fasta;do echo "vsearch -uchime_ref $x -db SILVA_128_QIIME_release/rep_set/rep_set_all/97/97_otus.fasta -strand plus -nonchimeras $x.nochimera.fna -threads 10";done > command.chimera.sh
 cat command.chimera.sh | parallel
-
+```
 
 ## load module
 ```
@@ -70,11 +70,11 @@ module load Qiime
 
 ## remove chimeras
 ```
-for 16S:
+# for 16S:
 identify_chimeric_seqs.py -i combined_seqs.fna -m usearch61 -o usearch_checked_chimeras/ -r gg_otus_4feb2011/rep_set/gg_97_otus_4feb2011.fasta 
 filter_fasta.py -f combined_seqs.fna -o seqs_chimeras_filtered.fna -s usearch_checked_chimeras/chimeras.txt -n
 
-for 18S and 16S:
+# for 18S and 16S:
 identify_chimeric_seqs.py -i combined_seqs.fna -m usearch61 -o usearch_checked_chimeras/ -r Silva_128_release/rep_set/gg_97_otus_4feb2011.fasta 
 filter_fasta.py -f combined_seqs.fna -o seqs_chimeras_filtered.fna -s usearch_checked_chimeras/chimeras.txt -n
 
@@ -86,7 +86,7 @@ add_qiime_labels.py -i merged/ -m  mapping.file.txt -c InputFileName
 ```
 
 
-## run qiime pipeline
+## run qiime pipeline for 16S and Greengenes
 ```
 pick_open_reference_otus.py -i seqs_chimeras_filtered.fna -o uclust_openref/
 ```
@@ -101,7 +101,7 @@ assign_taxonomy:id_to_taxonomy_fp SILVA_128_QIIME_release/taxonomy/taxonomy_all/
 assign_taxonomy:reference_seqs_fp SILVA_128_QIIME_release/rep_set/rep_set_all/97/97_otus.fasta
 ```
 
-### then run qiime
+### then run qiime (change name of infile)
 ```
 module load bioinfo-tools
 module load blast/2.2.26
