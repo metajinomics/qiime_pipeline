@@ -92,8 +92,8 @@ pick_open_reference_otus.py -i seqs_chimeras_filtered.fna -o uclust_openref/
 ```
 
 
-### To use Silva
-### first, you need to make file param.txt including this text:
+## To use Silva
+## first, you need to make file param.txt including this text:
 ```
 pick_otus:enable_rev_strand_match True
 assign_taxonomy:assignment_method blast
@@ -101,7 +101,7 @@ assign_taxonomy:id_to_taxonomy_fp SILVA_128_QIIME_release/taxonomy/taxonomy_all/
 assign_taxonomy:reference_seqs_fp SILVA_128_QIIME_release/rep_set/rep_set_all/97/97_otus.fasta
 ```
 
-### then run qiime (change name of infile)
+## then run qiime (change name of infile)
 ```
 module load bioinfo-tools
 module load blast/2.2.26
